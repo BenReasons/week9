@@ -90,5 +90,6 @@ post "/logins/create" do
 end
 
 get "/logout" do
+    session["user_id"] = nil
     view "logout"
 end
