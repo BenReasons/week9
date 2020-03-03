@@ -37,6 +37,13 @@ get "/events/:id/rsvps/new" do
 end
 
 get "/events/:id/rsvps/create" do
+    puts params
+    @event = events_table.where(id: params[:id]).to_a[0]
+    rsvps_table.insert(event_id: params["id"],
+                        going: params["going"],
+                        name: params["name"],
+                        email: params["email"],
+                        comments: params["comments"])
     view "create_rsvp"
 end
 
